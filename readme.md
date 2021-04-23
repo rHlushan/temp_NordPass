@@ -32,7 +32,7 @@ App is modularized. Modules used in the app:
  `updatedAt` and `isCompleted`. Unfinished recently updated items should be at the top.
 
 3. Update TodoDetails screen UI to look as close as possible to the one provided in 
- <a href="https://bucket.digitalarsenal.net/elpaso/android/android-tech-task/-/blob/master/uiSamples/detailsScreen.jpg">uiSamples/detailsScreen</a>
+ <a href="https://github.com/NordPass/android-tech-task/tree/master/uiSamplesdetailsScreen.jpg">uiSamples/detailsScreen</a>
 
 3. In the TodoDetails screen, when `Finished` or `Todo` button is clicked, app should update
  item's `isCompleted` and `updateAt` values and update the database. Changes should be reflected in
@@ -40,16 +40,16 @@ App is modularized. Modules used in the app:
  `String` to `OffsetDateTime`. 
 
 4. When user clicks on the `Edit` button in the `TodoDetails` screen, a new, `UpdateTodo` screen
- should be shown (design is in  <a href="https://bucket.digitalarsenal.net/elpaso/android/android-tech-task/-/blob/master/uiSamples/editScreen.jpg">uiSamples/editScreen</a>). Here, user should be able to edit `Todo`
+ should be shown (design is in  <a href="https://github.com/NordPass/android-tech-task/tree/master/uiSamples/editScreen.jpg">uiSamples/editScreen</a>). Here, user should be able to edit `Todo`
  item's title and save it. Your task is to create a new screen, called `UpdateTodo`. It should have
  `EditText` and save button. `EditText` should be prefilled with the title of `Todo` item.
  Once save is clicked item's `title` and `updatedAt` values should be updated and saved in the
- local database. `Title can not be empty` error should be shown if title is empty, see UI in <a href="https://bucket.digitalarsenal.net/elpaso/android/android-tech-task/-/blob/master/uiSamples/editScreenError.jpg">uiSamples/editScreenError</a>. Changes should be 
+ local database. `Title can not be empty` error should be shown if title is empty, see UI in <a href="https://github.com/NordPass/android-tech-task/tree/master/uiSamples/editScreenError.jpg">uiSamples/editScreenError</a>. Changes should be 
  reflected in `TodoDetails` and `TodoList` screens. 
 
 ## Bonus tasks
 * There are some bugs in the app. If you notice some, please fix. 
 * App does not work properly on release version. Could you figure out what is wrong and maybe fix it?
-* Update app to support `Dark Theme`. Use already existing colors in colors res. Example: <a href="https://bucket.digitalarsenal.net/elpaso/android/android-tech-task/-/blob/master/uiSamples/darkTheme.jpg">uiSamples/darkTheme</a>
+* Update app to support `Dark Theme`. Use already existing colors in colors res. Example: <a href="https://github.com/NordPass/android-tech-task/tree/master/uiSamples/darkTheme.jpg">uiSamples/darkTheme</a>
 * Write some tests
 
