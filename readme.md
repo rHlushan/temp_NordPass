@@ -32,14 +32,14 @@ App is modularized. Modules used in the app:
  `updatedAt` and `isCompleted`. Unfinished recently updated items should be at the top.
 
 3. Update TodoDetails screen UI to look as close as possible to the one provided in 
- <a href="https://github.com/NordPass/android-tech-task/tree/master/uiSamplesdetailsScreen.jpg">uiSamples/detailsScreen</a>
+ <a href="https://github.com/NordPass/android-tech-task/tree/master/uiSamples/detailsScreen.jpg">uiSamples/detailsScreen</a>
 
-3. In the TodoDetails screen, when `Finished` or `Todo` button is clicked, app should update
+4. In the TodoDetails screen, when `Finished` or `Todo` button is clicked, app should update
  item's `isCompleted` and `updateAt` values and update the database. Changes should be reflected in
  `TodoDetails` and `TodoList` screens. You can use `String.toDate()` extension function to convert 
  `String` to `OffsetDateTime`. 
 
-4. When user clicks on the `Edit` button in the `TodoDetails` screen, a new, `UpdateTodo` screen
+5. When user clicks on the `Edit` button in the `TodoDetails` screen, a new, `UpdateTodo` screen
  should be shown (design is in  <a href="https://github.com/NordPass/android-tech-task/tree/master/uiSamples/editScreen.jpg">uiSamples/editScreen</a>). Here, user should be able to edit `Todo`
  item's title and save it. Your task is to create a new screen, called `UpdateTodo`. It should have
  `EditText` and save button. `EditText` should be prefilled with the title of `Todo` item.
