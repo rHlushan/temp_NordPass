@@ -2,14 +2,15 @@ package com.nordpass.tt.usecase.todolist
 
 import com.nordpass.tt.usecase.Todo
 import io.reactivex.Completable
-import io.reactivex.Single
+import io.reactivex.Flowable
 
 interface TodoStorage {
+
     fun save(todoList: List<Todo>): Completable
 
-    fun getAll(): Single<List<Todo>>
+    fun observeAll(): Flowable<List<Todo>>
 
-    fun getById(id: Int): Single<Todo>
+    fun observeById(id: Long): Flowable<Todo>
 
-    fun removeById(ids: List<Int>): Completable
+    fun update(todo: Todo): Completable
 }

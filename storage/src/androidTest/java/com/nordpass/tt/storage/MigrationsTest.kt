@@ -20,7 +20,35 @@ class MigrationsTest {
     @Test
     fun validateMigration_1_2() {
         helper.createDatabase(DATABASE_NAME, 1)
-        helper.runMigrationsAndValidate(DATABASE_NAME, 2, false, Migrations.migration_1_2)
+        helper.runMigrationsAndValidate(
+            DATABASE_NAME,
+            2,
+            false,
+            TodoDatabase.Migrations.MIGRATION_1_2
+        )
+    }
+
+    @Test
+    fun validateMigration_2_3() {
+        helper.createDatabase(DATABASE_NAME, 1)
+        helper.runMigrationsAndValidate(
+            DATABASE_NAME,
+            2,
+            false,
+            TodoDatabase.Migrations.MIGRATION_2_3
+        )
+    }
+
+    @Test
+    fun validateMigration_1_3() {
+        helper.createDatabase(DATABASE_NAME, 1)
+        helper.runMigrationsAndValidate(
+            DATABASE_NAME,
+            3,
+            false,
+            TodoDatabase.Migrations.MIGRATION_1_2,
+            TodoDatabase.Migrations.MIGRATION_2_3
+        )
     }
 
     companion object {

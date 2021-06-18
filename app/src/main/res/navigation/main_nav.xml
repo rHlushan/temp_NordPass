@@ -31,7 +31,21 @@
         android:label="TodoDetailsFragment"
         tools:layout="@layout/fragment_details">
         <argument
-            android:name="todo"
-            app:argType="com.nordpass.tt.usecase.Todo" />
+            android:name="todoId"
+            app:argType="long" />
+        <action
+            android:id="@+id/actionTodoEdit"
+            app:destination="@id/todoEditFragment" />
     </fragment>
+
+    <fragment
+        android:id="@+id/todoEditFragment"
+        android:name="com.nordpass.task.ui.edit.TodoEditFragment"
+        android:label="TodoEditFragment"
+        tools:layout="@layout/fragment_todo_edit">
+        <argument
+            android:name="todoId"
+            app:argType="long" />
+    </fragment>
+
 </navigation>

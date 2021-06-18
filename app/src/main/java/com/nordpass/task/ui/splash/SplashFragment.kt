@@ -11,20 +11,18 @@ import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class SplashFragment : BaseFragment(R.layout.fragment_splash) {
-    private val viewModel: SplashViewModel by viewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel.completed.observe(this, { showTodoList() })
-        viewModel.error.observe(this, ::showError)
-    }
+    private val viewModel: SplashViewModel by viewModels()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        FragmentSplashBinding.bind(view).viewModel = viewModel
+        viewModel.completed.observe(viewLifecycleOwner, { showTodoList() })
+        viewModel.error.observe(viewLifecycleOwner, ::showError)
+        val binding = FragmentSplashBinding.bind(view)
+        binding.lifecycleOwner = viewLifecycleOwner
+        binding.viewModel = viewModel
     }
 
-    private fun showTodoList() {
+    private fun showTodoList() =
         findNavController().navigate(SplashFragmentDirections.actionTodoList())
-    }
 }

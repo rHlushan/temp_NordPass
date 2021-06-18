@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
@@ -11,47 +12,60 @@
             type="com.nordpass.task.ui.details.TodoDetailsViewModel" />
     </data>
 
-    <LinearLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:gravity="center"
-        android:orientation="vertical">
+        android:padding="16dp">
 
         <TextView
+            android:id="@+id/fragment_details_title"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
             android:gravity="center"
             android:text="@{viewModel.item.title}"
             android:textSize="20sp"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_details_status"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintVertical_chainStyle="packed"
             tools:text="Todo item title" />
 
         <TextView
-            android:layout_width="wrap_content"
+            android:id="@+id/fragment_details_status"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="64dp"
+            android:gravity="center"
             android:text="@{viewModel.item.completed ? @string/completedLabel : @string/unfinishedLabel}"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_details_edit"
+            app:layout_constraintTop_toBottomOf="@+id/fragment_details_title"
+            app:layout_constraintVertical_chainStyle="packed"
             tools:text="@string/completedLabel" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/fragment_details_edit"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{view -> viewModel.onEditClicked()}"
-            android:text="@string/editButtonText" />
+            android:text="@string/editButtonText"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_details_todo" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/fragment_details_todo"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{view -> viewModel.onTodoClicked()}"
+            android:onClick="@{view -> viewModel.revertCompleted()}"
             android:text="@string/todoButtonText"
-            android:visibility="@{viewModel.item.completed ? View.VISIBLE  : View.GONE}" />
+            android:visibility="@{viewModel.item.completed ? View.VISIBLE  : View.GONE}"
+            app:layout_constraintBottom_toTopOf="@+id/fragment_details_finished" />
 
-        <androidx.appcompat.widget.AppCompatButton
-            android:layout_width="wrap_content"
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/fragment_details_finished"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:onClick="@{view -> viewModel.onFinishedClicked()}"
+            android:onClick="@{view -> viewModel.revertCompleted()}"
             android:text="@string/finishedButtonText"
-            android:visibility="@{viewModel.item.completed ? View.GONE  : View.VISIBLE}" />
+            android:visibility="@{viewModel.item.completed ? View.GONE  : View.VISIBLE}"
+            app:layout_constraintBottom_toBottomOf="parent" />
 
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
 </layout>

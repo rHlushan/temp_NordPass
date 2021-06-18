@@ -1,13 +1,12 @@
 package com.nordpass.tt.usecase.todolist
 
 import com.nordpass.tt.usecase.Todo
-import io.reactivex.Single
+import io.reactivex.Flowable
 import javax.inject.Inject
 
 class GetTodoListUseCase @Inject constructor(
     private val storage: TodoStorage
 ) {
-    fun get(): Single<List<Todo>> {
-        return storage.getAll()
-    }
+    fun observeAll(): Flowable<List<Todo>> =
+        storage.observeAll()
 }

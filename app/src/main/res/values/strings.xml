@@ -8,4 +8,7 @@
     <string name="editButtonText">Edit</string>
     <string name="completedLabel">Completed</string>
     <string name="unfinishedLabel">Unfinished</string>
+    <string name="save">Save</string>
+    <string name="title">Title</string>
+    <string name="title_empty_error">Title can not be empty</string>
 </resources>

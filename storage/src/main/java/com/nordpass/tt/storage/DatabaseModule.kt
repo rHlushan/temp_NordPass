@@ -1,7 +1,7 @@
 package com.nordpass.tt.storage
 
 import android.content.Context
-import androidx.room.Room
+import com.nordpass.tt.storage.todo.TodoDao
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -10,12 +10,13 @@ import javax.inject.Singleton
 
 @InstallIn(SingletonComponent::class)
 @Module
-object DatabaseModule {
-    @Singleton @Provides
-    internal fun provideDatabase(context: Context): TodoDatabase {
-        return Room.databaseBuilder(context, TodoDatabase::class.java, "db")
-            .fallbackToDestructiveMigration()
-            .addMigrations(Migrations.migration_1_2)
-            .build()
-    }
+internal object DatabaseModule {
+
+    @Singleton
+    @Provides
+    fun provideDatabase(context: Context): TodoDatabase =
+        TodoDatabase.create(context)
+
+    @Provides
+    fun provideTodoDao(db: TodoDatabase): TodoDao = db.todoDao()
 }

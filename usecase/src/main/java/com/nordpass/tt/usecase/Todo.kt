@@ -1,10 +1,12 @@
 package com.nordpass.tt.usecase
 
-import java.io.Serializable
+import org.threeten.bp.Instant
 
 data class Todo(
-    val id: Int,
+    val id: Long,
     val title: String,
     val isCompleted: Boolean,
-    val createdAt: String
-) : Serializable
+    val createdAt: String,
+    val updatedAt: Instant?,
+    val userId: Long?
+)

@@ -7,7 +7,6 @@ class SyncTodoUseCase @Inject constructor(
     private val api: TodoListApi,
     private val storage: TodoStorage
 ) {
-    fun sync(): Completable {
-        return api.get().flatMapCompletable(storage::save)
-    }
+    fun sync(): Completable =
+        api.get().flatMapCompletable(storage::save)
 }

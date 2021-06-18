@@ -8,11 +8,9 @@ class TodoListAdapter(
     private val listener: (Todo) -> Unit
 ) : ListAdapter<Todo, TodoViewHolder>(TodoDifferCallback()) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder {
-        return TodoViewHolder.create(parent)
-    }
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): TodoViewHolder =
+        TodoViewHolder.create(parent, listener)
 
-    override fun onBindViewHolder(holder: TodoViewHolder, position: Int) {
-        holder.bind(getItem(position), listener)
-    }
+    override fun onBindViewHolder(holder: TodoViewHolder, position: Int) =
+        holder.bind(getItem(position))
 }

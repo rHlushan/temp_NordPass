@@ -6,29 +6,25 @@ import androidx.room.OnConflictStrategy
 import androidx.room.Query
 import io.reactivex.Completable
 import io.reactivex.Flowable
-import io.reactivex.Single
 
 @Dao
 internal interface TodoDao {
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    fun updateOrCreate(list: List<TodoEntity>): Completable
+    fun save(list: List<TodoEntity>): Completable
 
-    @Query("SELECT * FROM $TABLE_NAME")
-    fun getAll(): Single<List<TodoEntity>>
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    fun update(todo: TodoEntity): Completable
 
-    @Query("SELECT * FROM $TABLE_NAME")
+    @Query(
+        """
+        SELECT * FROM ${TodoEntity.TABLE_NAME} 
+        ORDER BY ${TodoEntity.IS_COMPLETED_COLUMN_NAME} DESC,
+        ${TodoEntity.UPDATED_AT_COLUMN_NAME} DESC
+        """
+    )
     fun observeAll(): Flowable<List<TodoEntity>>
 
-    @Query("DELETE FROM $TABLE_NAME WHERE id in (:ids)")
-    fun remove(ids: List<Int>): Completable
-
-    @Query("SELECT * FROM $TABLE_NAME WHERE id == :id")
-    fun getById(id: Int): Single<TodoEntity>
-
-    @Query("SELECT * FROM $TABLE_NAME WHERE id == :id")
-    fun observeById(id: Int): Flowable<TodoEntity>
-
-    companion object {
-        const val TABLE_NAME = "todo"
-    }
+    @Query("SELECT * FROM ${TodoEntity.TABLE_NAME} WHERE ${TodoEntity.ID_COLUMN_NAME} == :id")
+    fun observeById(id: Long): Flowable<TodoEntity>
 }

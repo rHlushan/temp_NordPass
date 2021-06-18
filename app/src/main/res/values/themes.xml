@@ -11,6 +11,10 @@
         <item name="colorOnSecondary">@color/black</item>
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
-        <!-- Customize your theme here. -->
+        <item name="materialButtonStyle">@style/Theme.NordPassTechTask.MaterialButton</item>
+    </style>
+
+    <style name="Theme.NordPassTechTask.MaterialButton" parent="Widget.MaterialComponents.Button.UnelevatedButton">
+        <item name="cornerRadius">20dp</item>
     </style>
 </resources>
